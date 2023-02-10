@@ -2,11 +2,11 @@ import { Formik, Form, Field, ErrorMessage, useField } from "formik";
 import * as Yup from 'yup'
 
 const MyTextInput = ({label, ...props}) => {
-    const {field, meta} = useField(props);
+    const [field, meta] = useField(props);
     return (
         <>
             <label htmlFor={props.name}>{label}</label>
-            <input {...props} {...field} />
+            <input {...field} {...props} />
             {meta.touched && meta.error ? (
                 <div className="error">{meta.error}</div>
             ) : null}
@@ -15,11 +15,11 @@ const MyTextInput = ({label, ...props}) => {
 };
 
 const MyCheckbox = ({children, ...props}) => {
-    const {field, meta} = useField({...props, type: 'checkbox'});
+    const [field, meta] = useField({...props, type: 'checkbox'});
     return (
         <>
             <label className="checkbox">
-                <input type='checkbox' {...props} {...field} />
+            <input type="checkbox" {...field} {...props} />
                 {children}
             </label>
 
